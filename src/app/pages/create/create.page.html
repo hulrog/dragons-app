@@ -4,6 +4,38 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content padding>
+  <form [formGroup]="createDragonForm" (submit)="createDragon()">
+    <ion-item>
+      <ion-label stacked>Dragon Name</ion-label>
+      <ion-input formControlName="name" type="text" placeholder="the name of the dragon">
+      </ion-input>
+    </ion-item>
 
+    <ion-item>
+      <ion-label stacked>Rider Name</ion-label>
+      <ion-input formControlName="rider" type="text" placeholder="the name of the rider">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Color</ion-label>
+      <ion-input formControlName="color" type="text" placeholder="color of the dragon">
+      </ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label stacked>Description</ion-label>
+      <ion-textarea
+        formControlName="description"
+        type="text"
+        placeholder="description of the dragon"
+      >
+      </ion-textarea>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" [disabled]="!createDragonForm.valid">
+      Add Dragon
+    </ion-button>
+  </form>
 </ion-content>

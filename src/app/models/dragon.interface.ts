@@ -1,7 +1,7 @@
 export interface Dragon {
     id: string;
+    name: string;
     rider: string;
     color: string;
-    size: string;
     description: string
 }
