@@ -26,6 +26,7 @@ export class CreatePage implements OnInit {
       rider: ['', Validators.required],
       color: ['', Validators.required],
       description: ['', Validators.required],
+      size:['', Validators.required]
     });
   }
 
@@ -39,9 +40,11 @@ export class CreatePage implements OnInit {
     const rider = this.createDragonForm.value.rider;
     const color = this.createDragonForm.value.color;
     const description = this.createDragonForm.value.description;
+    const size = this.createDragonForm.value.size;
+
 
     this.firestoreService
-      .createDragon(name, rider, color, description)
+      .createDragon(name, rider, color, description, size)
       .then(
         () => {
           loading.dismiss().then(() => {

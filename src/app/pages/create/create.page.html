@@ -4,38 +4,62 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+
+<ion-content>
   <form [formGroup]="createDragonForm" (submit)="createDragon()">
     <ion-item>
-      <ion-label stacked>Dragon Name</ion-label>
+      <ion-label>Dragon Name</ion-label>
       <ion-input formControlName="name" type="text" placeholder="the name of the dragon">
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Rider Name</ion-label>
+      <ion-label>Rider Name</ion-label>
       <ion-input formControlName="rider" type="text" placeholder="the name of the rider">
       </ion-input>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Color</ion-label>
-      <ion-input formControlName="color" type="text" placeholder="color of the dragon">
-      </ion-input>
+      <ion-label>Color</ion-label>
+      <ion-select formControlName="color">
+        <ion-select-option value="#ff0000">Red</ion-select-option>
+        <ion-select-option value="#00ff00">Green</ion-select-option>
+        <ion-select-option value="#0000ff">Blue</ion-select-option>
+        <ion-select-option value="#ffff00">Yellow</ion-select-option>
+        <ion-select-option value="#00ffff">Cyan</ion-select-option>
+        <ion-select-option value="#cd7f32">Bronze</ion-select-option>
+        <ion-select-option value="#000000">Black</ion-select-option>
+        <ion-select-option value="#808080">Gray</ion-select-option>
+        <ion-select-option value="#ffa500">Orange</ion-select-option>
+        <ion-select-option value="#800080">Purple</ion-select-option>
+      </ion-select>
     </ion-item>
 
     <ion-item>
-      <ion-label stacked>Description</ion-label>
+      <ion-label>Size</ion-label>
+      <ion-range formControlName="size" min="1" max="100" step="1"></ion-range>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Description</ion-label>
       <ion-textarea
         formControlName="description"
         type="text"
+        rows="3"
         placeholder="description of the dragon"
       >
       </ion-textarea>
     </ion-item>
 
+
     <ion-button expand="block" type="submit" [disabled]="!createDragonForm.valid">
       Add Dragon
     </ion-button>
   </form>
+
+  <div class="dragon-silhouette-container">
+    <div class="dragon-silhouette" [ngStyle]="{ 'background-color': createDragonForm.value.color, 'width': createDragonForm.value.size + '%', 'height': createDragonForm.value.size + '%' }">
+      <img src="assets\img\dragon3.png">
+    </div>
+  </div>
 </ion-content>

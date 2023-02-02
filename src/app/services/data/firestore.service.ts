@@ -14,13 +14,15 @@ export class FirestoreService {
     name: string,
     rider: string,
     color: string,
-    description: string
+    description: string,
+    size: number
   ): Promise<void> {
     return addDoc(collection(this.firestore, "dragonList"), {
       name,
       rider,
       color,
       description,
+      size
     }).then(() => {});
   }
 

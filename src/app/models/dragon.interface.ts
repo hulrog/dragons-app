@@ -3,5 +3,6 @@ export interface Dragon {
     name: string;
     rider: string;
     color: string;
-    description: string
+    description: string;
+    size: number;
 }
