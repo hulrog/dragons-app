@@ -58,8 +58,8 @@
   </form>
 
   <div class="dragon-silhouette-container">
-    <div class="dragon-silhouette" [ngStyle]="{ 'background-color': createDragonForm.value.color, 'width': createDragonForm.value.size + '%', 'height': createDragonForm.value.size + '%' }">
-      <img src="assets\img\dragon3.png">
+    <div class="dragon-silhouette">
+      <img id="dragon-silhoutte-img" src="assets\img\dragon-final.png" [ngStyle]="{ 'background-color': createDragonForm.value.color, 'width': createDragonForm.value.size + '%', 'height': createDragonForm.value.size + '%' }">
     </div>
   </div>
 </ion-content>

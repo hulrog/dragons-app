@@ -1,8 +1,18 @@
-.dragon-silhouette-container{
-  width:50%;
-  text-align:center;
-  justify-content:center;
-  align-items:center;
-  align-content:center;
-  align-items:center;
+.dragon-silhouette-container {
+  display: flex;
+  justify-content: center;
+  transform-origin: center;
+}
+
+.dragon-silhouette {
+  height: 250px;
+  width: 250px;
+  border: 1px solid red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#dragon-silhoutte-img{
+  display: block;
+  margin: auto;
 }
