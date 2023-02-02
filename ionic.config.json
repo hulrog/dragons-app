@@ -1,0 +1,7 @@
+{
+  "name": "dragons-app",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
