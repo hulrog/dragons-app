@@ -24,9 +24,9 @@ export class CreatePage implements OnInit {
     this.createDragonForm = formBuilder.group({
       name: ['', Validators.required],
       rider: ['', Validators.required],
-      color: ['', Validators.required],
+      color: ['#ff0000', Validators.required],
       description: ['', Validators.required],
-      size:['', Validators.required]
+      size:[50, Validators.required]
     });
   }
 

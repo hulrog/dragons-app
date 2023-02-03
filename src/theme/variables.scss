@@ -3,6 +3,15 @@
 
 /** Ionic CSS Variables **/
 :root {
+
+  --ion-background-color: #313030;
+  --ion-background-color-rgb: 49,48,48;
+  --ion-text-color: #ffffff;
+  --ion-text-color-rgb: 255,255,255;
+
+  --ion-toolbar-background: #1f1f1f;
+  --ion-tab-bar-background: #1f1f1f;
+
   /** primary **/
   --ion-color-primary: #9b0303;
 	--ion-color-primary-rgb: 155,3,3;
@@ -74,6 +83,19 @@
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+}
+
+ion-alert.select-alert {
+  --background: rgb(75, 75, 75)!important;
+
+  button {
+      color: white !important;
+      font-size: 20px !important;
+  }
+
+  .sc-ion-alert-md {
+      color: white;
+  }
 }
 
 @media (prefers-color-scheme: dark) {
