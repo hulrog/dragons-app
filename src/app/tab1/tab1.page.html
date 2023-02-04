@@ -13,7 +13,7 @@
   
   <ion-content>
     <ion-list>
-      <ion-item *ngFor="let dragon of dragons">
+      <ion-item *ngFor="let dragon of dragons" routerLink="/detail/{{dragon.id}}">
         {{ dragon.name }}
       </ion-item>
     </ion-list>

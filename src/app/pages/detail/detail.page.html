@@ -1,9 +1,21 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>detail</ion-title>
+  <ion-toolbar >
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title *ngIf="dragon">{{ dragon.name }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="ion-padding" *ngIf="dragon">
+  <h3>Rider</h3>
+  
+  <p>This dragon belongs to  {{ dragon.rider }} {{dragon.id}}</p>
 
+  <h3>Description</h3>
+  <p>Size: {{ dragon.size }}</p>
+  <p>Color: {{ dragon.color }}</p>
+
+   <ion-button expand="block" (click)="deleteDragon(dragon.id)"> Remove dragon </ion-button> 
 </ion-content>
+

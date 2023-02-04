@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Dragon } from '../../models/dragon.interface';
-import { Firestore, collectionData } from '@angular/fire/firestore';
+import { Firestore, collectionData, docData, doc, deleteDoc } from '@angular/fire/firestore';
 import { collection, addDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
-
+import { v4 as uuid } from 'uuid';
 @Injectable({
   providedIn: 'root'
 })
@@ -14,8 +14,17 @@ export class FirestoreService {
     this.dragonRef = collection(this.firestore, 'dragonList');
   }
   getDragonList() {
-    //console.log(collectionData(this.dragonRef, { idField: 'id' }));
     return collectionData(this.dragonRef, { idField: 'id' }) as Observable<Dragon[]>;
+  }
+
+  getDragon(id: string): Observable<Dragon> {
+    console.log(id);
+    return docData(doc(this.dragonRef, id)) as Observable<Dragon>;
+  }
+
+  deleteDragon(id: string): Promise<void> {
+    const dragonRef = doc(this.firestore, `dragonList/${id}`);
+    return deleteDoc(dragonRef);
   }
   createDragon(
     name: string,

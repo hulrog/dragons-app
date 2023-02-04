@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { FirestoreService } from '../services/data/firestore.service';
 import { Dragon } from '../models/dragon.interface';
 
+
 @Component({
   selector: 'app-tab1',
   templateUrl: 'tab1.page.html',
@@ -15,12 +16,6 @@ export class Tab1Page {
   this.dragons = [];
   }
   
-  // ngOnInit() {
-  //   this.firestoreService.getDragonList().subscribe(dragons => {
-  //     this.dragons = dragons;
-  //   });
-  //   }
-  // }
   ngOnInit() {
     this.firestoreService.getDragonList().subscribe(dragons => {
       this.dragons = dragons;
