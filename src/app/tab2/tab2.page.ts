@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FirestoreService } from '../services/data/firestore.service';
+import { Dragon } from '../models/dragon.interface';
+
 
 @Component({
   selector: 'app-tab2',
@@ -6,7 +9,16 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-
-  constructor() {}
-
+  dragons: Dragon[];
+  
+  constructor(private firestoreService: FirestoreService) {
+  this.dragons = [];
+  }
+  
+  ngOnInit() {
+    this.firestoreService.getDragonList().subscribe(dragons => {
+      this.dragons = dragons;
+      console.log(this.dragons);
+    });
+  }
 }

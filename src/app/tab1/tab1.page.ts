@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs';
 import { FirestoreService } from '../services/data/firestore.service';
 import { Dragon } from '../models/dragon.interface';
 
@@ -23,7 +22,3 @@ export class Tab1Page {
     });
   }
 }
-  
-  
-  
-  

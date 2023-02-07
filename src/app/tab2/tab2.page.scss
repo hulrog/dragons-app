@@ -1,0 +1,30 @@
+.dragon-silhouette-container {
+    display: flex;
+    justify-content: center;
+    transform-origin: center;
+  }
+  
+  .dragon-silhouette {
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #dragon-silhoutte-img{
+    display: block;
+    margin: auto;
+  }
+
+  .dragon-card {
+    width: 500px;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .title {
+    color: white;
+  }
