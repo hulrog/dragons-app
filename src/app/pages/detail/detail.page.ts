@@ -11,6 +11,48 @@ import { AlertController } from '@ionic/angular';
 })
 export class DetailPage implements OnInit {
 
+  colors = [
+    {
+    name: "Red",
+    value: "#ff0000"
+    },
+    {
+    name: "Green",
+    value: "#00ff00"
+    },
+    {
+    name: "Blue",
+    value: "#0000ff"
+    },
+    {
+    name: "Yellow",
+    value: "#ffff00"
+    },
+    {
+    name: "Cyan",
+    value: "#00ffff"
+    },
+    {
+    name: "Bronze",
+    value: "#cd7f32"
+    },
+    {
+    name: "Black",
+    value: "#000000"
+    },
+    {
+    name: "Gray",
+    value: "#808080"
+    },
+    {
+    name: "Orange",
+    value: "#ffa500"
+    },
+    {
+    name: "Purple",
+    value: "#800080"
+    }
+  ];
   dragon: Dragon = {
     id: 'Unknown',
     name: 'Unknown',
@@ -60,7 +102,37 @@ export class DetailPage implements OnInit {
     });
   
     await alert.present();
+
   }
+
+  async updateDragon() {
+
+    const dragonId: string = this.route.snapshot.paramMap.get('id') || '';
+
+    const updatedDragon = {
+      name: this.dragon.name,
+      rider: this.dragon.rider,
+      color: this.dragon.color,
+      description: this.dragon.description,
+      size: this.dragon.size
+    } as Dragon;
+    await this.firestoreService.updateDragon(dragonId, updatedDragon);
+    
+    const alert = await this.alertController.create({
+      message: `The Dragon ${this.dragon.name} has been updated`,
+      buttons: [
+        {
+          text: 'Okay',
+          handler: () => {
+            console.log("Dragon updated");
+          },
+        },
+      ],
+    });
+  
+    await alert.present();
+  }
+
 }
 
 

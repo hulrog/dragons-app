@@ -8,14 +8,32 @@
 </ion-header>
 
 <ion-content class="ion-padding" *ngIf="dragon">
-  <h3>Rider</h3>
-  
-  <p>This dragon belongs to  {{ dragon.rider }} {{dragon.id}}</p>
+  <ion-item>
+    <ion-label>Size</ion-label>
+    <ion-range min="1" max="100" step="1" [(ngModel)]="dragon.size"></ion-range>
+  </ion-item>
+  <ion-item>
+    <ion-label>Color</ion-label>
+    <ion-select [(ngModel)]="dragon.color">
+      <ion-select-option *ngFor="let color of colors" [value]="color.value">{{ color.name }}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Rider's name</ion-label>
+    <ion-input [(ngModel)]="dragon.rider"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label position="floating">Description</ion-label>
+    <ion-textarea [(ngModel)]="dragon.description"></ion-textarea>
+  </ion-item>
 
-  <h3>Description</h3>
-  <p>Size: {{ dragon.size }}</p>
-  <p>Color: {{ dragon.color }}</p>
+  <ion-button expand="block" (click)="updateDragon()">Update dragon</ion-button>
+  <ion-button expand="block" (click)="deleteDragon(dragon.id)"> Remove dragon </ion-button> 
 
-   <ion-button expand="block" (click)="deleteDragon(dragon.id)"> Remove dragon </ion-button> 
+  <div class="dragon-silhouette-container">
+    <div class="dragon-silhouette">
+      <img id="dragon-silhoutte-img" src="assets\img\dragon-final-dark.png" [ngStyle]="{ 'background-color': dragon.color, 'width': dragon.size + '%', 'height': dragon.size + '%' }">
+    </div>
+  </div>
 </ion-content>
 
