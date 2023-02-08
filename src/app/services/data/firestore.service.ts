@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Dragon } from '../../models/dragon.interface';
+import { User } from '../../models/user.interface';
 import { Firestore, collectionData, docData, doc, deleteDoc } from '@angular/fire/firestore';
 import { collection, addDoc, updateDoc } from 'firebase/firestore';
 import { Observable } from 'rxjs';
@@ -9,9 +10,11 @@ import { v4 as uuid } from 'uuid';
 })
 export class FirestoreService {
   private dragonRef;
+  private userRef;
 
   constructor(private readonly firestore: Firestore) {
     this.dragonRef = collection(this.firestore, 'dragonList');
+    this.userRef = collection(this.firestore, 'userList');
   }
   getDragonList() {
     return collectionData(this.dragonRef, { idField: 'id' }) as Observable<Dragon[]>;
@@ -47,4 +50,29 @@ export class FirestoreService {
     }).then(() => {});
   }
 
+  getUserList() {
+    return collectionData(this.userRef, { idField: 'id' }) as Observable<User[]>;
+  }
+
+  getUser(id: string): Observable<User> {
+    return docData(doc(this.userRef, id)) as Observable<User>;
+  }
+
+  deleteUser(id: string): Promise<void> {
+    const userRef = doc(this.firestore, `userList/${id}`);
+    return deleteDoc(userRef);
+  }
+
+  updateUser(id: string, user: User): Promise<void> {
+    const userRef = doc(this.firestore, `userList/${id}`);
+    return updateDoc(userRef, {...user});
+  }
+
+  createUser(username: string, email: string, password: string): Promise<void> {
+    return addDoc(collection(this.firestore, "userList"), {
+      username,
+      email,
+      password
+    }).then(() => {});
+  }
 }
