@@ -40,8 +40,6 @@ export class LoginPage implements OnInit {
   }
 
   logIn() {
-    
-
     const username = this.loginForm.value.username;
     const password = this.loginForm.value.password;
 
@@ -53,8 +51,27 @@ export class LoginPage implements OnInit {
         return;
       }
     }
+    this.showLoginFailAlert();
     console.log("fail");
+  }
 
+  async showLoginFailAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Login Failed',
+      message: 'The username or password is incorrect.',
+      buttons: [
+        {
+          text: 'OK',
+          role: 'cancel'
+        }
+      ]
+    });
+  
+    await alert.present();
+  }
+
+  goToRegister() {
+    this.router.navigate(['/register']);
   }
   
 
